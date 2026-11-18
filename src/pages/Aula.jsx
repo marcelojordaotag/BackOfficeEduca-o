@@ -26,7 +26,7 @@ function ConteudoAula({ id }) {
   const idx = todasAulas.findIndex((a) => a.id === id)
   const anterior = todasAulas[idx - 1]
   const proxima = todasAulas[idx + 1]
-  const certa = aula.quiz.correta
+  const certa = aula.quiz?.correta
   const feita = concluidas.includes(id)
 
   const responder = (i) => {
@@ -74,6 +74,15 @@ function ConteudoAula({ id }) {
         </section>
       )}
 
+      {!aula.quiz && (
+        <section className="concluir">
+          {feita
+            ? <span className="chip chip-ok">✓ Aula concluída</span>
+            : <button className="btn-primario" onClick={() => concluir(id)}>Marcar como concluída</button>}
+        </section>
+      )}
+
+      {aula.quiz && (
       <section className="cartao vidro bloco">
         <h3>Teste rápido</h3>
         <p>{aula.quiz.pergunta}</p>
@@ -94,6 +103,7 @@ function ConteudoAula({ id }) {
           </p>
         )}
       </section>
+      )}
 
       <nav className="paginacao">
         {anterior

@@ -238,6 +238,8 @@ h1, h2, h3 { letter-spacing: -.02em; }
 .opcao.errada .letra { background: #C0392B; color: #fff; }
 .feedback { margin: 14px 0 0 !important; font-weight: 600; opacity: 1 !important; }
 .feedback.ok { color: var(--ok) !important; } .feedback.erro { color: #C0392B !important; }
+.concluir { display: flex; justify-content: center; margin: 8px 0 0; }
+.concluir .btn-primario { border: 0; cursor: pointer; font: inherit; font-weight: 600; }
 .paginacao { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
 .btn-primario, .btn-secundario { display: inline-flex; align-items: center; padding: 12px 22px; border-radius: 99px; font-weight: 600; font-size: .92rem; text-decoration: none; transition: transform .2s; }
 .btn-primario { color: #fff; background: linear-gradient(135deg, var(--vinho-medio), var(--vinho-escuro)); box-shadow: 0 1px 0 rgba(255,255,255,.3) inset, 0 8px 24px rgba(106,15,43,.30); }

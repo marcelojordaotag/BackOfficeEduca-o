@@ -19,15 +19,6 @@ export const modulos = [
           'Veja quais rotinas do Backoffice passam pelo sistema.',
           'Entenda quem usa a Britech e para quê.',
         ],
-        quiz: {
-          pergunta: 'Por que é importante conhecer a Britech?',
-          opcoes: [
-            'Não é importante, basta seguir ordens',
-            'Porque vários processos do Backoffice passam por ela',
-            'Porque ela substitui todas as outras áreas',
-          ],
-          correta: 1,
-        },
       },
       {
         id: 'primeiro-acesso-britech',
@@ -37,11 +28,6 @@ export const modulos = [
         porque: 'O acesso correto garante que cada pessoa veja apenas o que precisa e que as ações fiquem registradas.',
         passos: ['Solicite seu acesso.', 'Entre com seu usuário e senha.', 'Confira se você vê as telas do seu dia a dia.'],
         dicas: ['Nunca compartilhe seu usuário e senha.'],
-        quiz: {
-          pergunta: 'O que fazer com seu usuário e senha?',
-          opcoes: ['Compartilhar com o time', 'Manter só com você', 'Anotar no monitor'],
-          correta: 1,
-        },
       },
       {
         id: 'navegando-na-britech',
@@ -50,11 +36,6 @@ export const modulos = [
         objetivo: 'Conhecer os menus e as principais telas da Britech.',
         porque: 'Saber onde está cada coisa deixa o trabalho mais rápido e reduz o risco de alterar a informação errada.',
         passos: ['Conheça o menu principal.', 'Encontre as telas mais usadas.', 'Use a busca e os filtros.'],
-        quiz: {
-          pergunta: 'Qual é o benefício de conhecer bem as telas?',
-          opcoes: ['Trabalhar mais rápido e com menos erros', 'Nenhum', 'Poder pular etapas'],
-          correta: 0,
-        },
       },
     ],
   },
