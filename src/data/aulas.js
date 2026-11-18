@@ -9,6 +9,37 @@ export const modulos = [
     descricao: 'Conheça a Britech, para que a usamos no Backoffice e como dar os primeiros passos no sistema.',
     aulas: [
       {
+        id: 'primeiro-acesso-britech',
+        titulo: 'Acessando a Britech',
+        duracao: 3,
+        objetivo: 'Acessar a Britech (Atlas PAS) e saber a diferença entre o ambiente de produção e o de pré-produção.',
+        porque: 'Acessar o sistema é o primeiro passo de qualquer rotina na Britech. Usar o ambiente certo evita que um teste vire uma alteração real.',
+        links: [
+          {
+            rotulo: 'Produção',
+            descricao: 'Ambiente oficial, onde as rotinas do dia a dia são feitas.',
+            url: 'https://tag.britech.com.br/PAS/Login/LoginInit.aspx?ReturnUrl=%2fPAS%2f',
+          },
+          {
+            rotulo: 'Pré-produção',
+            descricao: 'Ambiente de testes, separado da produção.',
+            url: 'https://tag-pre-prod.britech.com.br/PAS/Login/LoginInit.aspx',
+          },
+        ],
+        passos: [
+          'Abra o link do ambiente de produção.',
+          'Na tela "Seja bem vindo ao Atlas PAS", preencha o Login e a Senha.',
+          'Clique em Acessar.',
+          'Se esquecer a senha, use o link "Esqueci a senha" na própria tela.',
+        ],
+        imagem: { src: '/aulas/britech-login.png', legenda: 'Tela de login da Britech (Atlas PAS).' },
+        destaque: {
+          titulo: 'Existem dois ambientes',
+          texto: 'Além da produção, existe o ambiente de pré-produção. Cada ambiente tem login e senha próprios: a senha de um não funciona no outro.',
+        },
+        dicas: ['Nunca compartilhe seu usuário e senha.'],
+      },
+      {
         id: 'o-que-e-a-britech',
         titulo: 'O que é a Britech?',
         duracao: 4,
@@ -19,15 +50,6 @@ export const modulos = [
           'Veja quais rotinas do Backoffice passam pelo sistema.',
           'Entenda quem usa a Britech e para quê.',
         ],
-      },
-      {
-        id: 'primeiro-acesso-britech',
-        titulo: 'Primeiro acesso',
-        duracao: 3,
-        objetivo: 'Acessar a Britech pela primeira vez com segurança.',
-        porque: 'O acesso correto garante que cada pessoa veja apenas o que precisa e que as ações fiquem registradas.',
-        passos: ['Solicite seu acesso.', 'Entre com seu usuário e senha.', 'Confira se você vê as telas do seu dia a dia.'],
-        dicas: ['Nunca compartilhe seu usuário e senha.'],
       },
       {
         id: 'navegando-na-britech',

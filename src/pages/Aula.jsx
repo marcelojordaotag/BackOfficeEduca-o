@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getAula, todasAulas } from '../data/aulas.js'
 import { useProgressoContext } from '../components/Layout.jsx'
-import { IconeAlvo, IconeLampada, IconeLista, IconeRelogio, IconeSeta } from '../components/Icones.jsx'
+import { IconeAlvo, IconeLampada, IconeLista, IconeRelogio, IconeSeta, IconeLink } from '../components/Icones.jsx'
 
 export default function Aula() {
   const { id } = useParams()
@@ -59,6 +59,22 @@ function ConteudoAula({ id }) {
         </section>
       </div>
 
+      {aula.links?.length > 0 && (
+        <section className="cartao vidro bloco">
+          <span className="icone-bolha"><IconeLink /></span>
+          <h3>Links de acesso</h3>
+          <div className="links-acesso">
+            {aula.links.map((l) => (
+              <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="link-acesso">
+                <strong>{l.rotulo}</strong>
+                <span>{l.descricao}</span>
+                <code>{l.url.replace(/^https:\/\//, '').split('?')[0]}</code>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="cartao vidro bloco">
         <span className="icone-bolha"><IconeLista /></span>
         <h3>Passo a passo</h3>
@@ -66,6 +82,20 @@ function ConteudoAula({ id }) {
           {aula.passos.map((p, i) => <li key={p}><span className="n">{i + 1}</span>{p}</li>)}
         </ol>
       </section>
+
+      {aula.imagem && (
+        <figure className="print vidro">
+          <img src={aula.imagem.src} alt={aula.imagem.legenda} />
+          <figcaption>{aula.imagem.legenda}</figcaption>
+        </figure>
+      )}
+
+      {aula.destaque && (
+        <section className="destaque-aula">
+          <strong>{aula.destaque.titulo}</strong>
+          <p>{aula.destaque.texto}</p>
+        </section>
+      )}
 
       {aula.dicas?.length > 0 && (
         <section className="dica vidro">
