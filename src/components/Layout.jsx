@@ -1,29 +1,22 @@
-import { Link, NavLink, Outlet, useOutletContext } from 'react-router-dom'
+import { useState } from 'react'
+import { Outlet, useOutletContext } from 'react-router-dom'
 import useProgresso from '../hooks/useProgresso.js'
-import { todasAulas } from '../data/aulas.js'
+import Sidebar from './Sidebar.jsx'
 
 export default function Layout() {
   const progresso = useProgresso()
-  const pct = Math.round((progresso.concluidas.length / todasAulas.length) * 100)
+  const [aberta, setAberta] = useState(false)
 
   return (
-    <>
-      <header className="topo">
-        <Link to="/" className="marca">Centro Educacional <strong>Backoffice</strong></Link>
-        <nav>
-          <NavLink to="/" end>Início</NavLink>
-          <NavLink to="/trilhas">Aulas</NavLink>
-        </nav>
-        <div className="mini-progresso" title={`${pct}% concluído`}>
-          <div className="barra"><span style={{ width: `${pct}%` }} /></div>
-          <small>{pct}%</small>
-        </div>
-      </header>
-      <main className="conteudo">
-        <Outlet context={progresso} />
-      </main>
-      <footer className="rodape">Centro Educacional Backoffice</footer>
-    </>
+    <div className="app">
+      <Sidebar concluidas={progresso.concluidas} aberta={aberta} onFechar={() => setAberta(false)} />
+      <div className="principal">
+        <button className="hamburguer" onClick={() => setAberta(true)} aria-label="Abrir menu">☰</button>
+        <main className="conteudo">
+          <Outlet context={progresso} />
+        </main>
+      </div>
+    </div>
   )
 }
 
