@@ -19,7 +19,7 @@ export default function Home() {
   const minutos = todasAulas.reduce((s, a) => s + a.duracao, 0)
 
   const stats = [
-    { label: 'Mini cursos', valor: modulos.length },
+    { label: modulos.length === 1 ? 'Mini curso' : 'Mini cursos', valor: modulos.length },
     { label: 'Mini aulas', valor: total },
     { label: 'Minutos de conteúdo', valor: minutos },
     { label: 'Seu progresso', valor: `${pct}%` },

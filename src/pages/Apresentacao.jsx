@@ -44,7 +44,7 @@ export default function Apresentacao() {
         </Link>
 
         <ul className="landing-fatos">
-          <li><strong>{modulos.length}</strong> mini cursos</li>
+          <li><strong>{modulos.length}</strong> {modulos.length === 1 ? 'mini curso' : 'mini cursos'}</li>
           <li><strong>{todasAulas.length}</strong> mini aulas</li>
           <li><IconeRelogio width={16} height={16} /> <strong>{minutos}</strong> min de conteúdo</li>
         </ul>
