@@ -8,5 +8,5 @@ npm run dev
 ```
 
 - Conteúdo das aulas: `src/data/aulas.js` (cada aula tem objetivo, por que fazemos, passo a passo, dicas e um teste rápido).
-- Tela atual: início (sidebar com mini cursos, apresentação e visão geral). As demais telas virão depois.
+- Telas: início (sidebar com mini cursos e apresentação) e página da aula (objetivo, por que fazemos, passo a passo, dica e teste rápido).
 - O progresso do aluno fica salvo no navegador (localStorage).

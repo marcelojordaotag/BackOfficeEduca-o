@@ -17,9 +17,6 @@ export default function Sidebar({ concluidas, aberta, onFechar }) {
     <>
       <div className={`overlay ${aberta ? 'visivel' : ''}`} onClick={onFechar} />
       <aside className={`sidebar vidro ${aberta ? 'aberta' : ''}`} aria-label="Menu lateral">
-        <div className="sidebar-logo">
-          <div className="logo-selo"><img src="/logo-tag.png" alt="TAG Investimentos" /></div>
-        </div>
 
         <nav className="sidebar-nav">
           <NavLink to="/" end className="item" onClick={onFechar}>
@@ -41,10 +38,12 @@ export default function Sidebar({ concluidas, aberta, onFechar }) {
                 {aberto && (
                   <ul className="aulas">
                     {m.aulas.map((a) => (
-                      <li key={a.id} className="aula-item" title="Em breve">
-                        <span className={`bolinha ${concluidas.includes(a.id) ? 'ok' : ''}`} />
-                        <span className="aula-nome">{a.titulo}</span>
-                        <small>{a.duracao}′</small>
+                      <li key={a.id}>
+                        <NavLink to={`/aula/${a.id}`} className="aula-item" onClick={onFechar}>
+                          <span className={`bolinha ${concluidas.includes(a.id) ? 'ok' : ''}`} />
+                          <span className="aula-nome">{a.titulo}</span>
+                          <small>{a.duracao}′</small>
+                        </NavLink>
                       </li>
                     ))}
                   </ul>

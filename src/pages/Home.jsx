@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { modulos, todasAulas } from '../data/aulas.js'
 import { useProgressoContext } from '../components/Layout.jsx'
 import { IconeAlvo, IconeLampada, IconeLista, IconePlay, IconeRelogio } from '../components/Icones.jsx'
@@ -14,6 +15,7 @@ export default function Home() {
   const { concluidas } = useProgressoContext()
   const total = todasAulas.length
   const pct = Math.round((concluidas.length / total) * 100)
+  const proxima = todasAulas.find((a) => !concluidas.includes(a.id)) ?? todasAulas[0]
   const minutos = todasAulas.reduce((s, a) => s + a.duracao, 0)
 
   const stats = [
@@ -34,8 +36,10 @@ export default function Home() {
             por que os fazemos e como executá-los com qualidade.
           </p>
           <div className="acoes">
-            <button className="btn-vidro" disabled title="Em breve"><IconePlay width={16} height={16} /> Começar agora</button>
-            <span className="nota">Aulas em breve</span>
+            <Link className="btn-vidro" to={`/aula/${proxima.id}`}>
+              <IconePlay width={16} height={16} /> {concluidas.length ? 'Continuar aprendendo' : 'Começar agora'}
+            </Link>
+            <span className="nota">Próxima: {proxima.titulo}</span>
           </div>
         </div>
         <img className="hero-logo" src="/logo-tag.png" alt="TAG Investimentos" />
@@ -73,7 +77,7 @@ export default function Home() {
           const min = m.aulas.reduce((s, a) => s + a.duracao, 0)
           const feitas = m.aulas.filter((a) => concluidas.includes(a.id)).length
           return (
-            <article key={m.id} className="cartao vidro curso-card">
+            <Link key={m.id} to={`/aula/${(m.aulas.find((a) => !concluidas.includes(a.id)) ?? m.aulas[0]).id}`} className="cartao vidro curso-card">
               <div className={`capa capa-${i % 3}`}>
                 <span className="chip chip-claro">{m.aulas.length} aulas</span>
               </div>
@@ -84,7 +88,7 @@ export default function Home() {
                 <span className="meta">{feitas}/{m.aulas.length} concluídas</span>
               </div>
               <div className="trilho"><div style={{ width: `${(feitas / m.aulas.length) * 100}%` }} /></div>
-            </article>
+            </Link>
           )
         })}
       </div>
