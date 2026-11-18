@@ -19,7 +19,6 @@ export const modulos = [
           'Veja quais rotinas do Backoffice passam pelo sistema.',
           'Entenda quem usa a Britech e para quê.',
         ],
-        dicas: ['Substitua este texto pelo conteúdo real da aula.'],
         quiz: {
           pergunta: 'Por que é importante conhecer a Britech?',
           opcoes: [
@@ -51,7 +50,6 @@ export const modulos = [
         objetivo: 'Conhecer os menus e as principais telas da Britech.',
         porque: 'Saber onde está cada coisa deixa o trabalho mais rápido e reduz o risco de alterar a informação errada.',
         passos: ['Conheça o menu principal.', 'Encontre as telas mais usadas.', 'Use a busca e os filtros.'],
-        dicas: ['Substitua este texto pelo conteúdo real da aula.'],
         quiz: {
           pergunta: 'Qual é o benefício de conhecer bem as telas?',
           opcoes: ['Trabalhar mais rápido e com menos erros', 'Nenhum', 'Poder pular etapas'],
