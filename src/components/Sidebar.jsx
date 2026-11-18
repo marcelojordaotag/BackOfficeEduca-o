@@ -1,49 +1,50 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { modulos } from '../data/aulas.js'
+import { IconeCurso, IconeInicio, IconeSeta } from './Icones.jsx'
 
 export default function Sidebar({ concluidas, aberta, onFechar }) {
   const [abertos, setAbertos] = useState(() => new Set([modulos[0]?.id]))
   const alternar = (id) =>
     setAbertos((s) => {
       const n = new Set(s)
-      n.has(id) ? n.delete(id) : n.add(id)
+      if (n.has(id)) n.delete(id)
+      else n.add(id)
       return n
     })
 
   return (
     <>
       <div className={`overlay ${aberta ? 'visivel' : ''}`} onClick={onFechar} />
-      <aside className={`sidebar ${aberta ? 'aberta' : ''}`} aria-label="Menu lateral">
+      <aside className={`sidebar vidro ${aberta ? 'aberta' : ''}`} aria-label="Menu lateral">
         <div className="sidebar-logo">
-          <img src="/logo-tag.png" alt="TAG Investimentos" />
+          <div className="logo-selo"><img src="/logo-tag.png" alt="TAG Investimentos" /></div>
         </div>
 
         <nav className="sidebar-nav">
           <NavLink to="/" end className="item" onClick={onFechar}>
-            <span className="icone">⌂</span> Início
+            <IconeInicio /> Início
           </NavLink>
 
           <p className="secao-menu">Mini cursos</p>
           {modulos.map((m) => {
             const feitas = m.aulas.filter((a) => concluidas.includes(a.id)).length
-            const pct = Math.round((feitas / m.aulas.length) * 100)
             const aberto = abertos.has(m.id)
             return (
-              <div key={m.id} className="curso">
-                <button className="item curso-btn" onClick={() => alternar(m.id)} aria-expanded={aberto}>
-                  <span className="icone">▣</span>
+              <div key={m.id} className={`curso ${aberto ? 'aberto' : ''}`}>
+                <button className="item" onClick={() => alternar(m.id)} aria-expanded={aberto}>
+                  <IconeCurso />
                   <span className="curso-nome">{m.titulo}</span>
-                  <span className={`seta ${aberto ? 'up' : ''}`}>›</span>
+                  <span className="contador">{feitas}/{m.aulas.length}</span>
+                  <IconeSeta className="seta" width={16} height={16} />
                 </button>
-                <div className="curso-barra"><span style={{ width: `${pct}%` }} /></div>
                 {aberto && (
                   <ul className="aulas">
                     {m.aulas.map((a) => (
                       <li key={a.id} className="aula-item" title="Em breve">
                         <span className={`bolinha ${concluidas.includes(a.id) ? 'ok' : ''}`} />
-                        <span>{a.titulo}</span>
-                        <small>{a.duracao} min</small>
+                        <span className="aula-nome">{a.titulo}</span>
+                        <small>{a.duracao}′</small>
                       </li>
                     ))}
                   </ul>
