@@ -19,7 +19,7 @@ export default function Sidebar({ concluidas, aberta, onFechar }) {
       <aside className={`sidebar vidro ${aberta ? 'aberta' : ''}`} aria-label="Menu lateral">
 
         <nav className="sidebar-nav">
-          <NavLink to="/" end className="item" onClick={onFechar}>
+          <NavLink to="/inicio" end className="item" onClick={onFechar}>
             <IconeInicio /> Início
           </NavLink>
 

@@ -18,7 +18,7 @@ function ConteudoAula({ id }) {
     return (
       <div className="cartao vidro">
         <h3>Aula não encontrada</h3>
-        <Link to="/" className="link">Voltar ao início</Link>
+        <Link to="/inicio" className="link">Voltar ao início</Link>
       </div>
     )
   }
@@ -37,7 +37,7 @@ function ConteudoAula({ id }) {
   return (
     <article className="aula">
       <header className="aula-topo">
-        <nav className="migalha"><Link to="/">Início</Link> <IconeSeta width={14} height={14} /> {aula.moduloTitulo}</nav>
+        <nav className="migalha"><Link to="/inicio">Início</Link> <IconeSeta width={14} height={14} /> {aula.moduloTitulo}</nav>
         <h1>{aula.titulo}</h1>
         <div className="aula-info">
           <span className="chip chip-vinho"><IconeRelogio width={14} height={14} /> {aula.duracao} min</span>
@@ -101,7 +101,7 @@ function ConteudoAula({ id }) {
           : <span />}
         {proxima
           ? <Link className="btn-primario" to={`/aula/${proxima.id}`}>Próxima: {proxima.titulo} →</Link>
-          : <Link className="btn-primario" to="/">Voltar ao início</Link>}
+          : <Link className="btn-primario" to="/inicio">Voltar ao início</Link>}
       </nav>
     </article>
   )
